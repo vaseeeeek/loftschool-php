@@ -1,7 +1,7 @@
 <?php
 $host = 'localhost';
 $user = 'root';
-$password = 'root';
+$password = '';
 $dbname = 'loftschool-lessons-mysql';
 $port = 3306;
 
@@ -17,6 +17,11 @@ if (mysqli_connect_errno()) {
 $ret = $mysql->query("SELECT * FROM users ORDER BY id DESC LIMIT 5"); // Вернет обьект содержащий данные о выборке
 $data = $ret->fetch_all(); // Получить данный из обьекта выборки ($ret)
 
+echo '<pre>';
+var_dump($data);
+echo '</pre>';
+
+die;
 
 // insert
 $ret = $mysql->query("INSERT INTO users (`name`, `about`, `gender`, `birthday`, `city`)
@@ -24,6 +29,3 @@ $ret = $mysql->query("INSERT INTO users (`name`, `about`, `gender`, `birthday`, 
 if (!$ret) { // Проверка что завпрос выполился
     echo "query error " . $mysql->error; // вывести ошибки mysql
 }
-
-var_dump($ret);
-die;
